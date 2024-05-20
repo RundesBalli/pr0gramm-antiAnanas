@@ -37,7 +37,7 @@ while(1) {
    */
   $inbox = apiCall("https://pr0gramm.com/api/user/sync?offset=99999999")['inbox'];
   $inboxCount = $inbox['comments']+$inbox['mentions'];
-  if(!$inboxcount) {
+  if(!$inboxCount) {
     if($debug) {
       echo 'Nothing to do...'."\n";
     }
