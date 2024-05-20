@@ -1,0 +1,12 @@
+[Unit]
+Description=pr0gramm-antiAnanas
+
+[Service]
+User=root
+Type=simple
+Restart=always
+RestartSec=20
+ExecStart=/usr/bin/php -f /path/to/pr0gramm-antiAnanas.php
+
+[Install]
+WantedBy=default.target
