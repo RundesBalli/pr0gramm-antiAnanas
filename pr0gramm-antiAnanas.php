@@ -11,9 +11,10 @@
  */
 
 /**
- * Include the configuration file.
+ * Include the configuration file and the phrases.
  */
 require_once(__DIR__.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'config.php');
+require_once(__DIR__.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'phrases.php');
 
 /**
  * Include the apiCall.
@@ -84,6 +85,10 @@ while(1) {
       if($key !== FALSE) {
         unset($usernames[$key]);
       }
+      $key = array_search($message['name'], $usernames);
+      if($key !== FALSE) {
+        unset($usernames[$key]);
+      }
 
       /**
        * Check if the bot has been triggered before in this comment tree.
@@ -99,6 +104,7 @@ while(1) {
       if(!empty($usernames)) {
         $text.= "\n\n".'@'.implode(', @', $usernames);
       }
+      $text.= "\n\n".'https://anti-ananas.club';
 
       /**
        * Post the text.
@@ -113,6 +119,7 @@ while(1) {
         if(!empty($usernames)) {
           $text.= "\n\n".'@'.implode(', @', $usernames);
         }
+        $text.= "\n\n".'https://anti-ananas.club';
         $response = apiCall("https://pr0gramm.com/api/comments/post", ['itemId' => $message['itemId'], 'parentId' => 0, '_nonce' => $nonce, 'comment' => $text]);
       }
     }
