@@ -30,4 +30,15 @@ $timeout = 10;
  * @var bool
  */
 $debug = FALSE;
+
+/**
+ * Forbidden names
+ * 
+ * Array with usernames not to be highlighted.
+ * 
+ * @var array
+ */
+$forbiddenNames = [
+  'Gamb',
+];
 ?>

@@ -81,10 +81,20 @@ while(1) {
         $parent = $comments[$parent]['parent'];
       } while($parent != 0);
       $usernames = array_unique($usernames);
-      $key = array_search('Gamb', $usernames);
-      if($key !== FALSE) {
-        unset($usernames[$key]);
+
+      /**
+       * Remove usernames which are not allowed to highlight.
+       */
+      foreach($forbiddenNames as $name) {
+        $key = array_search($name, $usernames);
+        if($key !== FALSE) {
+          unset($usernames[$key]);
+        }
       }
+
+      /**
+       * Remove the username from the commenter.
+       */
       $key = array_search($message['name'], $usernames);
       if($key !== FALSE) {
         unset($usernames[$key]);
